@@ -9,6 +9,9 @@
     <h1>Simple Social Auth</h1>
     {% if user.is_authenticated %}
       You are signed in as <strong>{{ user.username }}</strong> /
+      <p>Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+
+      <p> {{ github_login }} </p>
       <a href="{% url 'home' %}">home</a> /
       <a href="{% url 'logout' %}">logout</a>
     {% else %}

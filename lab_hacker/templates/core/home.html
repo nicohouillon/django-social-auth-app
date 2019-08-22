@@ -3,4 +3,11 @@
 {% block content %}
 <h2>Homepage</h2>
 <p>Hello {{ user.username }}!</p>
+
+
+<p><h2>Your repository List</h2></>
+{% for repository in repositories_list %}
+  <p>{{repository}}</p>
+{% endfor %}
+
 {% endblock %}
