@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'social_django',
     'lab_hacker.core',
+    'lab_hacker.repository',
+    'lab_hacker.user',
 ]
 
 MIDDLEWARE = [
@@ -91,8 +93,12 @@ WSGI_APPLICATION = 'lab_hacker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'lab_hacker',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
 
@@ -141,3 +147,5 @@ LOGOUT_REDIRECT_URL = 'home'
 
 SOCIAL_AUTH_GITHUB_KEY = 'b79054d9158e6ddaab03'
 SOCIAL_AUTH_GITHUB_SECRET = '82f2d17fa8552c63bac7ad4c7f350af8653b3d0f'
+
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
