@@ -1,14 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, UserManager
 
+class CustomUserManager(models.Manager):
+    def create_user(self, username, email):
+        return self.model._default_manager.create(username=username)
 
-class User(models.Model):
+class User(AbstractBaseUser):
     username = models.CharField(max_length=100)
     last_login = models.DateTimeField(blank=True, null=True)
-    is_active = models.BooleanField(default=False)
-    playedHours = models.FloatField(default = 0)
     email = models.EmailField(max_length=254)
 
-    #objects = CustomUserManager()
+    objects = CustomUserManager()
 
-    #playedSongs = models.ManyToManyField(Song, blank=True, null = True)
-    #invitedFriends = models.ManyToManyField('self', blank = True, null = True)
+    USERNAME_FIELD = 'username'
+
+    def __unicode__(self):
+        return self.username
+
+    def is_authenticated(self):
+        return True    

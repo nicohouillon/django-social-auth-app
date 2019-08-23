@@ -6,16 +6,16 @@ import json
 from lab_hacker.repository.models import Repository
 
 
-#def instantiate_repository(repository, user_id):
-#    Repository.create(owner=user_id, name=repository.name, description=repositories.description)
-#
-#def create_repositories(repositories_list, user_id):
-#    for repository in repositories_list:
-#        print("\n\n\n\n")
-#        print(repository)
-#        print("\n\n\n\n")
-#
-#        instantiate_repository(repository, user_id)
+def instantiate_repository(repository, user):
+    Repository.objects.create(owner=user, name=repository['name'], description=repository['description'])
+
+def create_repositories(repositories_list, user):
+    for repository in repositories_list:
+        print("\n\n\n\n")
+        print(repository)
+        print("\n\n\n\n")
+
+        instantiate_repository(repository, user)
 
 def get_repositories_list(github_login):
     access_token = github_login['access_token']
@@ -41,7 +41,7 @@ def home(request):
         github_login = None
 
     repositories_list = get_repositories_list(github_login.extra_data)
-    #create_repositories(repositories_list, user.id)
+    #create_repositories(repositories_list, user)
 
     return render(request, 'core/home.html', {'github_login': github_login,
                                               'repositories_list': repositories_list})

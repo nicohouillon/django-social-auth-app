@@ -81,8 +81,6 @@ TEMPLATES = [
 
 AUTHENTICATION_BACKENDS = (
    'social_core.backends.github.GithubOAuth2',
-
-   'django.contrib.auth.backends.ModelBackend',
 )
 
 WSGI_APPLICATION = 'lab_hacker.wsgi.application'
@@ -149,3 +147,6 @@ SOCIAL_AUTH_GITHUB_KEY = 'b79054d9158e6ddaab03'
 SOCIAL_AUTH_GITHUB_SECRET = '82f2d17fa8552c63bac7ad4c7f350af8653b3d0f'
 
 SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+#SOCIAL_AUTH_STORAGE = 'user.models.CustomDjangoStorage'
+
+SOCIAL_AUTH_USER_MODEL = 'user.User'
