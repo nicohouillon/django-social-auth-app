@@ -7,7 +7,13 @@ from lab_hacker.repository.models import Repository
 
 
 def instantiate_repository(repository, user):
-    Repository.objects.create(owner=user, name=repository['name'], description=repository['description'])
+    name = repository['name']
+    description = repository['description'] or ""
+
+    obj, created = Repository.objects.update_or_create(
+        name=name, owner=user,
+        defaults={'description': description}
+    )
 
 def create_repositories(repositories_list, user):
     for repository in repositories_list:
@@ -41,7 +47,7 @@ def home(request):
         github_login = None
 
     repositories_list = get_repositories_list(github_login.extra_data)
-    #create_repositories(repositories_list, user)
+    create_repositories(repositories_list, user)
 
     return render(request, 'core/home.html', {'github_login': github_login,
                                               'repositories_list': repositories_list})
