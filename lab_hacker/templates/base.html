@@ -3,6 +3,12 @@
 <head>
   <title>Simple Social Auth</title>
   <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+  {% load bootstrap4 %}
+  
+  {% bootstrap_css %}
+  {% bootstrap_javascript jquery='full' %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
   <header>

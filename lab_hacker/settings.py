@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'lab_hacker.core',
     'lab_hacker.repository',
     'lab_hacker.user',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
