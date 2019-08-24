@@ -1,7 +1,7 @@
 {% load static %}<!DOCTYPE html>
 <html>
 <head>
-  <title>Simple Social Auth</title>
+  <title>Repository Tagger</title>
   <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
   {% load bootstrap4 %}
   
@@ -10,36 +10,30 @@
 
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
-<body>
-  <header>
-    <h1>Simple Social Auth</h1>
-    {% if user.is_authenticated %}
-      You are signed in as <strong>{{ user.username }}</strong> /
-      <p>Connected as <a href="https://github.com/{{ github_login.extra_data.login }}/" target="_blank">{{ github_login.extra_data.login }}</a></p>
+	<body>
+		<main>
+			<p id="betaWarning">Github Login Django</p>
+            {% if user.is_authenticated %}
+                <button type="button" class="btn btn-outline-dark" id="btLogout" onclick="location.href='{% url 'logout'  %}'">Sair</button>
+            {% endif %}
 
-      <p> {{ github_login }} </p>
-      <a href="{% url 'home' %}">home</a> /
-      <a href="{% url 'logout' %}">logout</a>
-    {% else %}
-      <a href="{% url 'login' %}">login</a> /
-    {% endif %}
-    <hr>
-  </header>
-  <main>
-    {% for message in messages %}
-      <p style="color: {% if message.tags == 'success' %}green{% elif message.tags == 'error' %}red{% endif %}">
-        {{ message }}
-      </p>
-    {% endfor %}
-    {% block content %}
-    {% endblock %}
-  </main>
-  <footer>
-    <hr>
-    <small>
-      <a href="https://simpleisbetterthancomplex.com">simpleisbetterthancomplex.com</a> /
-      <a href="https://simpleisbetterthancomplex.com/tutorial/2016/10/24/how-to-add-social-login-to-django.html">read more about this example</a>
-    </small>
-  </footer>
-</body>
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container">
+					<div id="avatar">
+						<img src="{% static 'img/avatar.png' %}" />
+						{% if user.is_authenticated %}
+                            <a href="mailto:tais.betateste@gmail.com?subject='Feedback sobre a Taís'">
+								<button type="button" class="btn btn-danger btn-lg" id="btFeedback">Enviar feedback <div class="btn-subtitle">matheusmirandalacerda@gmail.com</span></button>
+                            </a>
+						{% endif %}
+					</div>
+					<h1 class="display-3">Repository Tagger</h1>
+					<h2>Django Social Auth</h2>
+				</div>
+			</div>
+
+			{% block content %}
+			{% endblock %}
+		</main>
+	</body>
 </html>

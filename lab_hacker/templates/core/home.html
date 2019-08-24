@@ -6,8 +6,17 @@
 <p>{{ user.id }}</p>
 
 <p><h2>Your repository List</h2></>
-{% for repository in repositories_list %}
-  <p>{{repository}}</p>
-{% endfor %}
+
+{% load render_table from django_tables2 %}
+<!doctype html>
+<html>
+  <head>
+    <title>List of persons</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
+  <body>
+    {% render_table repositories_table %}
+  </body>
+</html>
 
 {% endblock %}
