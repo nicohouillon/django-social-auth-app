@@ -4,6 +4,8 @@ from social_django.models import UserSocialAuth
 import requests
 import json
 from lab_hacker.repository.models import Repository
+from lab_hacker.repository.tables import RepositoryTable
+from django_tables2 import RequestConfig
 
 
 def instantiate_repository(repository, user):
@@ -46,8 +48,14 @@ def home(request):
     except UserSocialAuth.DoesNotExist:
         github_login = None
 
-    repositories_list = get_repositories_list(github_login.extra_data)
-    create_repositories(repositories_list, user)
+    #repositories_list = get_repositories_list(github_login.extra_data)
+    #create_repositories(repositories_list, user)
+
+    repositories_list = Repository.objects.filter(owner=user)
+
+    repositories_table = RepositoryTable(Repository.objects.all())
+    RequestConfig(request).configure(repositories_table)
 
     return render(request, 'core/home.html', {'github_login': github_login,
-                                              'repositories_list': repositories_list})
+                                              'repositories_list': repositories_list,
+                                              'repositories_table': repositories_table})

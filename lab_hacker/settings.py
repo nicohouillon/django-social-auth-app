@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'lab_hacker.core',
     'lab_hacker.repository',
     'lab_hacker.user',
-    'bootstrap4'
+    'bootstrap4',
+    'django_tables2'
 ]
 
 MIDDLEWARE = [
@@ -75,6 +76,7 @@ TEMPLATES = [
 
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
+                'django.template.context_processors.request'
             ],
         },
     },
