@@ -61,3 +61,18 @@ def get_repositories(request):
 
     response = redirect('/')
     return response
+
+@login_required
+def new_tag(request, repository_id):
+    title = request.POST.get("tag_title", "")
+
+    tag, created = Tag.objects.get_or_create(
+        title=title
+    )
+
+    repository = Repository.objects.get(id=repository_id)
+    repository.tags.add(tag)
+    repository.save()
+
+    response = redirect('/edit_repository_tags/{}'.format(repository_id))
+    return response

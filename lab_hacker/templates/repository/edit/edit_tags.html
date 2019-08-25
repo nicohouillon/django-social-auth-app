@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<div class="container">
+    
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <p><h1> Editing Tags for: {{ repository.name }}</h2></p>
+
+          <form action="{% url 'login' %}" method="post">{% csrf_token %}
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="description" value="{{ repository.description }}" id="description" readonly>
+            </div>
+
+          </form>
+          <form method="post" action="">
+            {% csrf_token %}
+              {{ form }}
+            <input type="submit" value="Update {{repository.name}} tags"/>
+          </form>
+
+        </div>
+    </div>
+
+
+    {% load render_table from django_tables2 %}
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2> Create new Tag </h2>
+        <form action="{% url 'new_tag' repository.id %}" method="post">{% csrf_token %}
+          <div class="form-group">
+            <label for="tag_title">Tag title</label>
+            <input type="tag_title" class="form-control" name="tag_title" value="" id="tag_title">
+          </div>
+        </form>
+        {% render_table tags_table %}
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
