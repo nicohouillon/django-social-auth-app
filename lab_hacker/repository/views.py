@@ -4,28 +4,19 @@ from lab_hacker.repository.models import Repository, Tag
 from lab_hacker.repository.forms.forms import RepositoryForm
 import requests
 import json
+from lab_hacker.repository.models import Tag
+from lab_hacker.repository.tables import TagTable
+from django_tables2 import RequestConfig
 
 
 def instantiate_repository(repository, user):
     name = repository['name']
     description = repository['description'] or ""
 
-    tag_1 = Tag(title='devops')
-    tag_1.save()
-    tag_2 = Tag(title='web')
-    tag_2.save()
-    tag_3 = Tag(title='database')
-    tag_3.save()
-
     obj, created = Repository.objects.update_or_create(
         name=name, owner=user,
         defaults={'description': description}
     )
-
-    obj.tags.add(tag_1)
-    obj.tags.add(tag_2)
-    obj.tags.add(tag_3)
-    obj.save()
 
 def create_repositories(repositories_list, user):
     for repository in repositories_list:
@@ -38,8 +29,12 @@ def edit_repository_tags(request, repository_id):
 
     form = RepositoryForm()
 
-    return render(request, 'repository/edit/edit.html', {'repository': repository,
-                                                         'form': form})
+    tags_table = TagTable(Tag.objects.all())
+    RequestConfig(request).configure(tags_table)
+
+    return render(request, 'repository/edit/edit_tags.html', {'repository': repository,
+                                                              'form': form,
+                                                              'tags_table': tags_table})
 
 @login_required
 def get_repositories(request):

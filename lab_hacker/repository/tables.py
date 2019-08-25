@@ -1,5 +1,5 @@
 import django_tables2 as tables
-from .models import Repository
+from .models import Repository, Tag
 from django_tables2 import TemplateColumn
 
 
@@ -17,3 +17,10 @@ class RepositoryTable(tables.Table):
         fields = ('id', 'name', 'description', 'tags', 'edit')
 
     edit = TemplateColumn(template_name='repository/tables/repository_update_column.html')
+
+class TagTable(tables.Table):
+    class Meta:
+        model = Tag
+        template_name = 'django_tables2/bootstrap.html'
+
+        fields = ('id', 'title',)
