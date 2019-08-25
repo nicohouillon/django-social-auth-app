@@ -6,13 +6,8 @@ class Tag(models.Model):
     title = models.CharField(
         'Tag Tittle',
         max_length=35,
-        help_text='Ex: Devops, python'
-    )
-
-    color = models.CharField(
-        'Color',
-        max_length=30,
-        help_text='Tag Color.'
+        help_text='Ex: Devops, python',
+        unique=True
     )
 
     def __str__(self):
