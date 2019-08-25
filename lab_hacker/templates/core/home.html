@@ -23,12 +23,8 @@
 
       <form action="{% url 'home' %}" method="post">{% csrf_token %}
         <div class="form-group">
-          <label for="tags">Search using tags...</label>
-          <input type="text" class="form-control" name="tags" value="" id="tags">
-        </div>
-
-        <div >
-          <button type="submit" class="btn btn-outline-primary">Search</button>
+          <label for="tags">Filter using tags. E.g: Devops, Web, Python </label>
+          <input type="text" class="form-control" name="tags" value="{{ tags_filter_param }}" id="tags">
         </div>
       </form>
 

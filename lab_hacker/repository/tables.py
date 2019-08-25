@@ -14,9 +14,9 @@ class RepositoryTable(tables.Table):
                             tags_list+'</a>')
             return '-'
 
-        fields = ('id', 'name', 'description', 'tags', 'edit')
+        fields = ('id', 'name', 'description', 'tags', 'edit_tags')
 
-    edit = TemplateColumn(template_name='repository/tables/repository_update_column.html')
+    edit_tags = TemplateColumn(template_name='repository/tables/repository_update_column.html')
 
 class TagTable(tables.Table):
     class Meta:
