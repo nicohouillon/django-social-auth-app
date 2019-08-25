@@ -22,12 +22,16 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [
     path(r'', core_views.home, name='home'),
+    path('admin/', admin.site.urls),
+
     path(r'get_repositories', repository_views.get_repositories, name='get_repositories'),
     path(r'edit_repository_tags/<repository_id>', repository_views.edit_repository_tags, name='edit_repository_tags'),
     path(r'new_tag/<repository_id>', repository_views.new_tag, name='new_tag'),
-    path('admin/', admin.site.urls),
+    path(r'update_repository/<repository_id>', repository_views.update_repository, name='update_repository'),
+
     path(r'login/', LoginView.as_view(), name='login'),
     path(r'logout/', LogoutView.as_view(), name='logout'),
+
     path(r'oauth/', include('social_django.urls', namespace='social')),
     path(r'select2/', include('django_select2.urls')),
 ]

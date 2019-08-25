@@ -17,7 +17,7 @@
             </div>
 
           </form>
-          <form method="post" action="">
+          <form method="post" action="{% url 'update_repository' repository.id %}">
             {% csrf_token %}
               {{ form }}
             <input type="submit" value="Update {{repository.name}} tags"/>

@@ -27,7 +27,7 @@ def edit_repository_tags(request, repository_id):
     user = request.user
     repository = Repository.objects.get(id=repository_id) 
 
-    form = RepositoryForm()
+    form = RepositoryForm(pre_setted_tags=repository.tags.all())
 
     tags_table = TagTable(Tag.objects.all())
     RequestConfig(request).configure(tags_table)
@@ -35,6 +35,18 @@ def edit_repository_tags(request, repository_id):
     return render(request, 'repository/edit/edit_tags.html', {'repository': repository,
                                                               'form': form,
                                                               'tags_table': tags_table})
+
+@login_required
+def update_repository(request, repository_id):
+    user = request.user
+    repository = Repository.objects.get(id=repository_id)
+
+    tags_ids = dict(request.POST).get('tags')
+    repository.tags.set(Tag.objects.filter(id__in=tags_ids))
+    repository.save()
+
+    response = redirect('/')
+    return response
 
 @login_required
 def get_repositories(request):
