@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'lab_hacker.user',
     'bootstrap4',
     'django_tables2',
+    'django_select2'
 ]
 
 MIDDLEWARE = [

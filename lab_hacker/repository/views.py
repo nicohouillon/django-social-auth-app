@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from lab_hacker.repository.models import Repository, Tag
+from lab_hacker.repository.forms.forms import RepositoryForm
 import requests
 import json
 
@@ -35,7 +36,10 @@ def edit_repository_tags(request, repository_id):
     user = request.user
     repository = Repository.objects.get(id=repository_id) 
 
-    return render(request, 'repository/edit/edit.html', {'repository': repository})
+    form = RepositoryForm()
+
+    return render(request, 'repository/edit/edit.html', {'repository': repository,
+                                                         'form': form})
 
 @login_required
 def get_repositories(request):

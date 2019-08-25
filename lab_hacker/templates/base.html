@@ -4,7 +4,8 @@
   <title>Repository Tagger</title>
   <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
   {% load bootstrap4 %}
-  
+
+  {{ form.media.css }}
   {% bootstrap_css %}
   {% bootstrap_javascript jquery='full' %}
 
@@ -35,5 +36,6 @@
 			{% block content %}
 			{% endblock %}
 		</main>
+        {{ form.media.js }}
 	</body>
 </html>
