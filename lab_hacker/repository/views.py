@@ -24,7 +24,6 @@ def create_repositories(repositories_list, user):
 
 @login_required
 def edit_repository_tags(request, repository_id):
-    user = request.user
     repository = Repository.objects.get(id=repository_id) 
 
     form = RepositoryForm(pre_setted_tags=repository.tags.all())
@@ -38,7 +37,6 @@ def edit_repository_tags(request, repository_id):
 
 @login_required
 def update_repository(request, repository_id):
-    user = request.user
     repository = Repository.objects.get(id=repository_id)
 
     tags_ids = dict(request.POST).get('tags')
