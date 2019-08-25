@@ -1,4 +1,4 @@
-"""lab_hacker URL Configuration
+"""django_social_auth_app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-from lab_hacker.core import views as core_views
-from lab_hacker.repository import views as repository_views
+from django_social_auth_app.core import views as core_views
+from django_social_auth_app.repository import views as repository_views
 from django.contrib.auth.views import LoginView, LogoutView
 
 urlpatterns = [

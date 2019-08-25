@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from lab_hacker.repository.models import Repository, Tag
-from lab_hacker.repository.forms.forms import RepositoryForm
+from django_social_auth_app.repository.models import Repository, Tag
+from django_social_auth_app.repository.forms.forms import RepositoryForm
 import requests
 import json
-from lab_hacker.repository.models import Tag
-from lab_hacker.repository.tables import TagTable
+from django_social_auth_app.repository.models import Tag
+from django_social_auth_app.repository.tables import TagTable
 from django_tables2 import RequestConfig
 
 

@@ -1,5 +1,5 @@
 from django.db import models
-from lab_hacker.user.models import User
+from django_social_auth_app.user.models import User
 
 
 class Tag(models.Model):

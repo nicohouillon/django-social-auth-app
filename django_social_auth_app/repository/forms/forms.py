@@ -1,6 +1,6 @@
 from django import forms
 from django_select2.forms import Select2MultipleWidget
-from lab_hacker.repository.models import Repository, Tag
+from django_social_auth_app.repository.models import Repository, Tag
 
 class RepositoryForm(forms.ModelForm):
     class Meta:

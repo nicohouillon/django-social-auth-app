@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from social_django.models import UserSocialAuth
-from lab_hacker.repository.models import Repository, Tag
-from lab_hacker.repository.tables import RepositoryTable
+from django_social_auth_app.repository.models import Repository, Tag
+from django_social_auth_app.repository.tables import RepositoryTable
 from django_tables2 import RequestConfig
 from django.db.models import Q
 from functools import reduce

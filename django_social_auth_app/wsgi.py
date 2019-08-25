@@ -1,5 +1,5 @@
 """
-WSGI config for lab_hacker project.
+WSGI config for django_social_auth_app project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'lab_hacker.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_social_auth_app.settings')
 
 application = get_wsgi_application()
