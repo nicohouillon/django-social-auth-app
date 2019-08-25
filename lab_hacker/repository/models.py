@@ -16,18 +16,19 @@ class Tag(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.title
 
 class Repository(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, unique=True)
     description = models.TextField()
-    tags = models.ManyToManyField(Tag, blank=True, related_name='tags')
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return '%d, %s, (%s), (%s)' % (
                 self.id,
                 self.name,
                 self.description,
-                ', '.join(tag.name for tag in self.tags.all())
+                'teste'
+                ', '.join(tag.title for tag in self.tags.all())
             )
