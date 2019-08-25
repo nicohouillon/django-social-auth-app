@@ -6,38 +6,47 @@
 
 <div class="container">
     
-    <div class="row">
+    <div class="row" style="padding-bottom: 50px">
         <div class="col-md-6 offset-md-3">
           <p><h1> Editing Tags for: {{ repository.name }}</h2></p>
 
           <form action="{% url 'login' %}" method="post">{% csrf_token %}
 
+          {% if repository.description %}
             <div class="form-group">
               <input type="text" class="form-control" name="description" value="{{ repository.description }}" id="description" readonly>
             </div>
+          {% endif %}
 
           </form>
           <form method="post" action="{% url 'update_repository' repository.id %}">
             {% csrf_token %}
               {{ form }}
-            <input type="submit" value="Update {{repository.name}} tags"/>
+            <button type="submit" value="update_repository_tags" class="btn btn-primary">Update {{repository.name}} tags</button>
           </form>
 
         </div>
     </div>
 
 
-    {% load render_table from django_tables2 %}
-    <div class="row">
+    <div class="row" style="padding-bottom: 30px">
       <div class="col-md-6 offset-md-3">
         <h2> Create new Tag </h2>
         <form action="{% url 'new_tag' repository.id %}" method="post">{% csrf_token %}
           <div class="form-group">
-            <label for="tag_title">Tag title</label>
+            <label for="tag_title">Enter Tag title</label>
             <input type="tag_title" class="form-control" name="tag_title" value="" id="tag_title">
           </div>
+          <div >
+            <button type="submit" value="create_tag" class="btn btn-primary">Create Tag</button>
+          </div>
         </form>
-        {% render_table tags_table %}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+      <h2><a href="{% url 'home' %}">Back</a></h2>
       </div>
     </div>
 </div>
