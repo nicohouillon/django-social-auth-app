@@ -32,4 +32,5 @@ def home(request):
 
     return render(request, 'core/home.html', {'github_login': github_login,
                                               'repositories_table': repositories_table,
-                                              'tags_filter_param': tags_filter_param})
+                                              'tags_filter_param': tags_filter_param,
+                                              'repositories_list': repositories_list})
