@@ -59,11 +59,6 @@ def get_repositories(request):
     access_token = github_login.extra_data['access_token']
     github_user = github_login.extra_data['login']
 
-    user_header = {
-                   'Authorization': access_token,
-                   'Content-Type': 'application/json'
-                  }
-
     response = requests.get('https://api.github.com/users/{}/repos'.format(github_user))
     repositories_list = response.json()
 
