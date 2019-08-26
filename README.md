@@ -36,6 +36,12 @@ After that, get you `Client ID` and `Client Secret` keys and add it respectively
 - SOCIAL_AUTH_GITHUB_SECRET=<SET YOUR GITHUB SECRET HERE>
 ```
 
+The `ALLOWED_HOSTS` variable must be setted according to your domains configs.
+
+```yml
+ALLOWED_HOSTS=localhost
+```
+
 **Do not share your secrets in a public way!**
 
 If you do not want to use GitHub authentication, you need to properly configure another provide and comment the following lines, at file 'setting.py':
@@ -47,6 +53,8 @@ If you do not want to use GitHub authentication, you need to properly configure 
 SOCIAL_AUTH_GITHUB_KEY = os.getenv('SOCIAL_AUTH_GITHUB_KEY')
 SOCIAL_AUTH_GITHUB_SECRET = os.getenv('SOCIAL_AUTH_GITHUB_SECRET')
 ```
+
+
 
 ### Execution
 To run the Django service, start the container:
