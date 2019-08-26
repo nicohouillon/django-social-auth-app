@@ -12,14 +12,14 @@ services:
       - PORT=8000
       - ALLOWED_HOSTS=localhost
       - PREFIX_URL=
-      - POSTGRES_DATABASE=django_social_auth_app
+      - POSTGRES_DATABASE=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_HOST=webdb
       - SOCIAL_AUTH_GITHUB_KEY=<SET YOUR KEY VALUE HERE>
       - SOCIAL_AUTH_GITHUB_SECRET=<SET YOUR GITHUB SECRET HERE>
     volumes:
-      - ./web:/web
+      - ./django_social_auth_app:/web/django_social_auth_app
     ports:
       - 8000:8000
     depends_on:
