@@ -71,6 +71,6 @@ Read the [Contribution Guide](./docs/CONTRIBUTING.md) for more information.
 
 # License
 
-All this project is developed and are available under LICENSE [GPL3](https://github.com/lappis-unb/tais/blob/master/LICENSE)
+All this project is developed and are available under LICENSE [GPL3](https://github.com/MatheusMiranda/django-social-auth-app/blob/master/LICENSE)
 
 You can see the dependency list [here](https://libraries.io/github/MatheusMiranda/django_social_auth_app)
