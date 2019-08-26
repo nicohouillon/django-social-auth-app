@@ -2,7 +2,7 @@
 <!-- badges -->
 <a href="https://www.gnu.org/licenses/gpl-3.0.pt-br.html"><img src="https://img.shields.io/badge/licence-GPL3-green.svg"/></a>
 
- Simple application that implements integration between Django and Github, using python [social-auth-app-django](https://github.com/python-social-auth/social-app-django) and allow users to add tags on their repositories, classifing and filtering them by categories.
+ Simple application that implements integration between Django and Github, using the python lib [social-auth-app-django](https://github.com/python-social-auth/social-app-django) and allow users to add tags on their repositories, classifing and filtering them by categories.
 
  This project is a `test app`, that serve as a boilerplate for projects that use Django Social Authentication.
 
@@ -71,6 +71,6 @@ Read the [Contribution Guide](./docs/CONTRIBUTING.md) for more information.
 
 # License
 
-All this project is developed under LICENSE [GPL3](https://github.com/lappis-unb/tais/blob/master/LICENSE)
+All this project is developed and are available under LICENSE [GPL3](https://github.com/lappis-unb/tais/blob/master/LICENSE)
 
-You can see the dependency list here [aqui](https://libraries.io/github/MatheusMiranda/django_social_auth_app)
+You can see the dependency list [here](https://libraries.io/github/MatheusMiranda/django_social_auth_app)
