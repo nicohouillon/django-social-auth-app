@@ -47,6 +47,13 @@ def update_repository(request, repository_id):
     return response
 
 @login_required
+def remove_repository(request, repository_id):
+    repository = Repository.objects.get(id=repository_id).delete()
+
+    response = redirect('/')
+    return response
+
+@login_required
 def get_repositories(request):
     user = request.user
 
